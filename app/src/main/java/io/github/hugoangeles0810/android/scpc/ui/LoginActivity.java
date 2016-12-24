@@ -1,6 +1,7 @@
 package io.github.hugoangeles0810.android.scpc.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -46,12 +47,21 @@ public class LoginActivity extends AppCompatActivity
 
         presenter = new LoginPresenter();
         presenter.addView(this);
+
+        if (presenter.isLogged()) {
+            goToMain();
+        }
     }
 
     private void enableInputs(Boolean enabled) {
         textInputUsername.setEnabled(enabled);
         textInputPassword.setEnabled(enabled);
         buttonLogin.setEnabled(enabled);
+    }
+
+    private void goToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -76,7 +86,7 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void onLoginSuccess() {
-        Toast.makeText(this , "Log in!", Toast.LENGTH_SHORT).show();
+        goToMain();
     }
 
     @Override

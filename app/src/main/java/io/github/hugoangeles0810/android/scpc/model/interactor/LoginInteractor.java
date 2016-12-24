@@ -6,6 +6,7 @@ import io.github.hugoangeles0810.android.scpc.data.entity.request.LoginRequest;
 import io.github.hugoangeles0810.android.scpc.data.entity.response.LoginResponse;
 import io.github.hugoangeles0810.android.scpc.data.entity.response.Response;
 import io.github.hugoangeles0810.android.scpc.data.rest.ApiClient;
+import io.github.hugoangeles0810.android.scpc.model.User;
 import io.github.hugoangeles0810.android.scpc.model.callback.LoginCallback;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -22,7 +23,10 @@ public class LoginInteractor {
             @Override
             public void success(Response<LoginResponse> loginResponseResponse, retrofit.client.Response response) {
                 if (loginResponseResponse != null) {
-                    callback.onLoginSuccess();
+                    User user = new User();
+                    user.setEmail(loginResponseResponse.getData().getEmail());
+                    user.setToken(loginResponseResponse.getData().getToken());
+                    callback.onLoginSuccess(user);
                 } else {
                     callback.onLoginError(MyApp.getContext().getString(R.string.error_server_connection));
                 }

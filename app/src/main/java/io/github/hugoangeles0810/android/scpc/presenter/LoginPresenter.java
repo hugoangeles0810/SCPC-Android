@@ -1,5 +1,7 @@
 package io.github.hugoangeles0810.android.scpc.presenter;
 
+import io.github.hugoangeles0810.android.scpc.data.prefs.UserPrefs;
+import io.github.hugoangeles0810.android.scpc.model.User;
 import io.github.hugoangeles0810.android.scpc.model.callback.LoginCallback;
 import io.github.hugoangeles0810.android.scpc.model.interactor.LoginInteractor;
 import io.github.hugoangeles0810.android.scpc.view.LoginView;
@@ -25,6 +27,10 @@ public class LoginPresenter implements Presenter<LoginView>, LoginCallback {
         loginInteractor.login(username, password, this);
     }
 
+    public Boolean isLogged() {
+        return new UserPrefs().isLogged(view.getContext());
+    }
+
     @Override
     public void addView(LoginView view) {
         this.view = view;
@@ -37,9 +43,11 @@ public class LoginPresenter implements Presenter<LoginView>, LoginCallback {
     }
 
     @Override
-    public void onLoginSuccess() {
+    public void onLoginSuccess(User user) {
         view.enableInputs();
         view.hideProgress();
+        UserPrefs userPrefs = new UserPrefs();
+        userPrefs.setUserLogged(view.getContext(), user);
         view.onLoginSuccess();
     }
 
