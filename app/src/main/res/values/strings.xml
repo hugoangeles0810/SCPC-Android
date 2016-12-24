@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">SCPC-Android</string>
+    <string name="all_app_name">SCPC</string>
+    <string name="all_app_description">Sistema de Control de Personal de Campo</string>
+
+    <string name="login_username">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_enter">Ingresar</string>
+    <string name="login_title">Iniciar sesión</string>
+    <string name="all_field_required">Campo requerido</string>
+    <string name="error_server_connection">Error al conectar con el servidor</string>
+    <string name="error_invalid_credentials">Credenciales incorrectas</string>
+
+
 </resources>
