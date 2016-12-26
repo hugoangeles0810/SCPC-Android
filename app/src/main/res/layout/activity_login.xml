@@ -19,7 +19,7 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             android:orientation="vertical"
             android:gravity="center"
-            tools:context="io.github.hugoangeles0810.android.scpc.ui.LoginActivity">
+            tools:context="io.github.hugoangeles0810.android.scpc.ui.activity.LoginActivity">
 
             <TextView
                 android:layout_width="wrap_content"

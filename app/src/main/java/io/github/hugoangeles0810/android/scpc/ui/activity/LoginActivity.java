@@ -1,4 +1,4 @@
-package io.github.hugoangeles0810.android.scpc.ui;
+package io.github.hugoangeles0810.android.scpc.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -61,6 +61,9 @@ public class LoginActivity extends AppCompatActivity
 
     private void goToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
