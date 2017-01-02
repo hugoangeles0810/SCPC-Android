@@ -11,10 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import io.github.hugoangeles0810.android.scpc.R;
-import io.github.hugoangeles0810.android.scpc.data.prefs.UserPrefs;
 import io.github.hugoangeles0810.android.scpc.presenter.MainPresenter;
+import io.github.hugoangeles0810.android.scpc.service.LocationService;
 import io.github.hugoangeles0810.android.scpc.view.MainView;
 
 public class MainActivity extends AppCompatActivity
@@ -40,6 +43,32 @@ public class MainActivity extends AppCompatActivity
 
         presenter = new MainPresenter();
         presenter.addView(this);
+
+        Button buttonStartService = (Button) findViewById(R.id.btn_service_start);
+        if (buttonStartService != null) {
+            buttonStartService.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, LocationService.class);
+                    startService(intent);
+                }
+            });
+        } else {
+            Toast.makeText(this, "Button null", Toast.LENGTH_SHORT).show();
+        }
+
+        Button buttonStopService = (Button) findViewById(R.id.btn_service_stop);
+        if (buttonStopService != null) {
+            buttonStopService.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, LocationService.class);
+                    stopService(intent);
+                }
+            });
+        } else {
+            Toast.makeText(this, "Button null", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

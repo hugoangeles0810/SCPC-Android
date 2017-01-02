@@ -26,4 +26,7 @@ public class UserPrefs {
         SharedPrefsUtils.setBooleanPreference(context, Const.KEYS.IS_LOGGED, false);
     }
 
+    public String getToken(Context context) {
+        return SharedPrefsUtils.getStringPreference(context, Const.KEYS.TOKEN);
+    }
 }
